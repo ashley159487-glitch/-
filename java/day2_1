@@ -1,0 +1,30 @@
+package exam03;
+
+public class ChangeTypeExam {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int num01 = 15;
+		long lyNum01 = 20;
+		byte byNum01 = 0;
+		
+		//자동 형변환
+		lyNum01 = num01;
+		//강제 형변환
+		byNum01 = (byte)num01;
+		
+		int num02 = 130;
+		byte byNum02 = 0;
+		
+		byNum02 = (byte)num02;
+		
+		System.out.println("형변환1 int " + num01 +"-->long " + lyNum01);
+		System.out.println("형변환2 int " + num01 +"-->byte " + byNum01);
+		System.out.println("형변환3 int " + num02 +"-->byte " + byNum02);
+	}
+
+}
+
+형변환에 관해서는 파이썬에서 배웠지만 파이썬과 형식이 매우 달라보임
+파이썬에서는 형변환을 할 때 int(a)이렇게 하는데 자바는 (int)a; 이렇게 뭘로 변해야 하는지에다가 괄호를 치네
