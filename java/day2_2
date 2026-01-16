@@ -1,0 +1,28 @@
+package exam03;
+
+public class ChangeCharExam02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		char ch = 'E';
+		int num = 97;
+		
+		int chToNum = 0;
+		char intToCh = ' ';
+		
+		// int와 char는 자동 형변환
+		// char --> int 로 변경할 떄는 자동 형변환 가능
+		chToNum = ch;
+		// int --> char 변경할 떄는 강제 형변환
+		intToCh = (char)num;
+		
+		System.out.println(chToNum);
+		System.out.println(intToCh);
+
+	}
+
+}
+
+마찬가지로 형변환에 대한 내용인데 자바는 파이썬에 비해 정말로 불편하네... 그래도 자바를 배우다보면
+  꼼꼼해지긴 하겠다...
