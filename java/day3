@@ -1,0 +1,29 @@
+package exam02;
+
+public class operatorExam01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int num01 = 100;
+		byte byNum01 = 10;
+		long lyNum01 = 20;
+		double dyNum01 = 33.3333;
+		
+		//byte끼리 더했는데 결과는 int
+		//byte byresult = byNum01 + byNum01;
+		
+		int inResult01 = byNum01 + byNum01;
+		
+		long lnResult01 = lyNum01 + num01;
+		
+		inResult01 = byNum01 + num01;
+		
+		int target = 10;
+		System.out.println(target % 3);
+
+	}
+
+}
+
+자바에서는 산술연산자를 쓸 때 변수의 type이 더 큰 걸로 결과가 나온다. 그러니 연산자를 쓸 때도 type을 잘 생각하면서 쓰자.
