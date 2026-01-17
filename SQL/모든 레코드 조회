@@ -1,0 +1,5 @@
+SELECT * FROM ANIMAL_INS
+ORDER BY ANIMAL_ID ASC
+
+모든 레코드를 찾는 건 *로 검색하자.
+오랜만에 쉬운 거 나오니까 좋네...
