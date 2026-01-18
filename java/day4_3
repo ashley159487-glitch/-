@@ -1,0 +1,31 @@
+package exam04;
+
+import java.util.Scanner;
+
+public class IfTest03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("점수를 입력하세요 : ");
+		int score = scan.nextInt();
+		
+		if (score >= 90) {
+			System.out.println("점수 : " + score + ", 학점 : A");
+		}else if (score >= 80) {
+			System.out.println("점수 : " + score + ", 학점 : B");
+		}else if (score >= 70) {
+			System.out.println("점수 : " + score + ", 학점 : C");
+		}else {
+			System.out.println("점수 : " + score + ", 학점 : F");
+		}
+		
+		scan.close();
+		
+
+	}
+
+}
+파이썬으로 만들었던 학점 계산기와 일치함. 문법적으로 어떻게 다른지만 정확히 알면
+헷갈릴 일은 없을 거 같다.
