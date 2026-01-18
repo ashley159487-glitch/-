@@ -1,0 +1,25 @@
+package exam04;
+
+public class IfTest01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int score = 55;
+		
+		//점수가 60점 이상이면 합격
+		
+		if (score >= 60) {
+			//참일 때 실행
+			System.out.println("합격!");
+		}else {
+			//결과가 거짓
+			System.out.println("불합격!");
+		}
+		
+	}
+
+}
+
+if-else를 배웠다 이건 파이썬과 매우 흡사하다.
+  if 뒤 무조건 ()안에 조건 넣기, :이 아니라 {}로 구분시키기만 알면 파이썬과 같다.
