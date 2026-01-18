@@ -1,0 +1,42 @@
+package exam04;
+
+import java.util.Scanner;
+
+public class IfTest02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("나이를 입력 : ");
+		int age = scan.nextInt(); // 정수값 입력 대기
+		
+		if (age > 19) {
+			System.out.println("성인입니다.");
+		}else {
+			System.out.println("미성년자입니다.");
+		}
+		//스캐너 사용 후 닫아줘야 한다.
+		scan.close();
+
+	}
+
+}
+파이썬의 input인 Scanner를 배움. 자바는 Scanner도 import해야한다.
+그리고 
+System.out.println("나이를 입력 : ");
+int age = scan.nextInt(); // 정수값 입력 대기
+이렇게 출력하는 부분과 입력하는 부분을 따로 만들어야 한다.
+또한 스캐너를 썼으면 꼭 닫아줘야 한다.
+요즘 자바도 짧아지려고 노력하는 중.
+
+// 파이썬의 with와 같은 자바의 문법
+try (Scanner scan = new Scanner(System.in)) {
+    System.out.print("나이를 입력 : ");
+    int age = scan.nextInt();
+    // 블록이 끝나면 알아서 close()가 호출됨!
+} catch (Exception e) {
+    // 에러 처리
+}
+이런 식으로.
