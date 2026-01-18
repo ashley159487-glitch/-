@@ -1,0 +1,9 @@
+SELECT COUNT(I.FISH_TYPE) AS FISH_COUNT FROM FISH_INFO I
+JOIN FISH_NAME_INFO N ON I.FISH_TYPE = N.FISH_TYPE
+WHERE N.FISH_NAME = 'BASS' OR N.FISH_NAME = 'SNAPPER'
+
+이렇게 써도 정답이긴 하지만 COUNT에 컬럼을 넣을 필요가 없는게
+이미 JOIN으로 걸러진 행을 세는 거라 그냥 COUNT(*)을 쓰는게 좋다.
+그리고 WHERE 명령문을
+WHERE N.FISH_NAME IN ('BASS', 'SNAPPER')
+이렇게 쓰는 게 더 깔끔하다.
