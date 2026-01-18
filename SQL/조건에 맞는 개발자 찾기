@@ -1,0 +1,9 @@
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME FROM DEVELOPERS
+WHERE (SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'PYTHON'))
+OR (SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'C#'))
+ORDER BY ID ASC
+
+비트연산 &나 |를 이용한 문제가 나올 수 있으니 잘 알아두자.
+& = 둘 다 1일 때 1
+| = 둘 중 하나라도 1일 때 1
+문제에서 '파이썬 이나 C#'라고 했으니 OR를 써야 한다. 지문을 잘 읽자.
