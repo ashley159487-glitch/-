@@ -1,0 +1,6 @@
+SELECT ID, LENGTH FROM FISH_INFO 
+ORDER BY LENGTH DESC, ID ASC
+LIMIT 10
+
+이제 왠만한 건 알았다 싶으면 모르는 게 튀어나오네.
+LIMIT 기억하자.
