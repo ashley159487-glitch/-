@@ -1,0 +1,16 @@
+def solution(a, b, c):
+    answer = 0
+    s = a + b + c
+    v =(a + b + c) * (a**2 + b**2 + c**2)
+    l = (a + b + c) * (a**2 + b**2 + c**2) * (a**3 + b**3 + c**3)
+    if a != b and b != c and a != c :
+        answer = s
+    elif a == b == c :
+        answer = l
+    else :
+        answer = v
+    return answer
+
+제곱의 표현은 변수**제곱 할 수(a**3)으로 표현 한다.
+비교문에서 a와 b와 c가 다 다를 때는 a != b != c가 아닌
+a != b and b != c and a != c 이거다!
