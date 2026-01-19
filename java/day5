@@ -1,0 +1,32 @@
+package exam05;
+
+public class SwitchExam01 {
+
+	public static void main(String[] args) {
+		
+		int score = 0;
+		
+		score = (int)(Math.random() * 100) + 1;
+		
+		switch(score / 10) {
+		
+		case 10 :
+		case 9 :
+			System.out.println("점수 : " + score + ", 학점 : A학점");
+			break;
+		case 8 :
+			System.out.println("점수 : " + score + ", 학점 : B학점");
+			break;
+		case 7 :
+			System.out.println("점수 : " + score + ", 학점 : C학점");
+			break;
+		default :
+			System.out.println("점수 : " + score + ", 학점 : F학점");
+		}
+
+	}
+
+}
+
+switch case 문을 배웠다. 파이썬에선 본 적이 없는 거라 생소했지만 어려운 건 아니라 금방 손에 익을 거 같다.
+내용도 그렇게 중요하지 않은지 오늘 강의는 다른 강의들보다 짧았다.
