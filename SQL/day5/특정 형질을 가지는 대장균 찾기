@@ -1,0 +1,8 @@
+SELECT COUNT(*) AS COUNT FROM ECOLI_DATA
+WHERE (GENOTYPE & 2) = 0
+AND ((GENOTYPE & 1) > 0 OR (GENOTYPE & 3) > 0)
+
+SELECT 명령문의 틀 자체는 간단하지만 2진법을 이용해야 하기에
+생각을 잘 해야한다.
+
+
