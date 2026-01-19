@@ -1,0 +1,24 @@
+def solution(a, d, included):
+    answer = 0
+    for i in range(len(included)) :
+        if included[i] == True :
+            answer += (a + (d * i))
+    return answer
+
+오늘은 절망의 날이다... sql도 파이썬도 왜이리 어려운지...
+일단 등차수열이란 "똑같은 숫자만큼 계속 더해지는 숫자 줄세우기"이다.
+첫 항이 a이고 거기에 d를 더한 값이 두번째 항, 거기에 다시 d를 더한게 3번째 항이 된다.
+이걸 식으로 쓰면 a + (d * i)가 된다.
+
+def solution(a, d, included):
+    answer = 0
+    for i, flag in enumerate(included) :
+        if flag :
+            c = a + (d * i)
+            answer += c
+    return answer
+
+enumerate()는 인덱스 번호와 그 인덱스의 값까지 같이 낚아채는 함수.
+여기서 i는 인덱스 번호, flag는 값 곧 boolean값이다.
+if문은 값이 True일 때만 아래의 코드를 실행하므로
+굳이 if flag == True : 라고 안 써도 된다.
