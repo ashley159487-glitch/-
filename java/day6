@@ -1,0 +1,49 @@
+package exam06;
+
+public class ForTest01 {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		sum = sum + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;
+		System.out.println(sum);
+		
+		//반복문을 이용해서 덧셈!
+		sum = 0;
+		
+		for (int i = 1; i <= 10; i++) {
+			sum = sum + i;
+			
+		}
+		System.out.println(sum);
+	
+	}
+
+}
+
+자바에서 for문을 배웠다. 마찬가지로 파이썬과 별 다를 게 없는 모양새이다.
+
+package exam06;
+
+public class ForTest02 {
+
+	public static void main(String[] args) {
+		
+		int sum = 0; // 합산을 위한 변수
+		
+		for (int i = 1; i<=100; i++) {
+			
+			if (i % 2 == 0) {
+				sum = sum + i;	
+			}
+			
+			
+		}
+		//5050 -> 짝수 : 2550 홀수 : 2500
+		System.out.println(sum);
+
+	}
+
+}
+
+1부터 100까지의 수에서 짝수만 골라 합한 코드.
