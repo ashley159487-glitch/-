@@ -1,0 +1,106 @@
+package exam08;
+
+public class WhileTest01 {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		int count = 1;
+		
+		while(count <= 10) {
+			
+			sum = sum + count;
+			//카운트를 증가
+			count++;
+		}
+		
+		System.out.println(sum);
+	}
+
+}
+
+오늘은 while문에 대해 배웠다.
+프로그래머스의 퀴즈들을 계속해서 풀다보니까 강의의 이해도가 확실히 올라간 것 같다.
+
+package exam08;
+
+import java.util.Scanner;
+
+public class WhileTest02 {
+
+	public static void main(String[] args) {
+		
+		int target = (int)(Math.random() * 50) + 1;
+		Scanner scan = new Scanner(System.in);
+		
+		int user = 0;
+		int count = 1;
+		while(target != user) {
+			System.out.print("숫자를 입력 : ");
+			user = scan.nextInt(); // 정수 값 입력
+			
+			if(target > user) {
+				System.out.println("업!");
+			}else if(target < user) {
+				System.out.println("다운!");
+			}else {
+				System.out.println("정답! 값은 " + target + " 입니다.");
+				System.out.println(count + " 번만에 맞췄습니다.");
+			}
+			count++;
+		}
+		scan.close();
+	}
+
+}
+
+랜덤함수와 while문을 이용한 업다운 게임을 예제로 만들었다.
+여기서 count를 1로 잡아주는게 중요한 거 같다. 1로 잡아줌으로써 첫 실행 시 1로 카운트되게 만들어 줘
+횟수를 출력 할 때 제대로 된 횟수를 출력시킨다.
+
+package exam08;
+
+public class DoWhileTest {
+
+	public static void main(String[] args) {
+		
+		int count = 1;
+		
+		
+		while(count < 1) {
+			System.out.println("실행");
+		}
+		// 한 번 실행 후 조건을 검색. 조건에 상관 없이 무조건 1회 반복을 시켜야 한다면 do-while문을 쓴다.
+		do {
+			System.out.println("do-while 실행");
+	
+		}while(count < 1);
+
+	}
+
+}
+
+do-while문도 배웠다. 파이썬을 배울 때는 배우지 않았던 거라 생소했지만,
+반복문을 돌리기 전에 한 번 실행 후 반복문을 돌리는 반복문이다.
+
+package exam08;
+
+public class DoWhileTest02 {
+
+	public static void main(String[] args) {
+		
+		int count = 1;
+		int sum = 0;
+		
+		do {
+			sum += count++;
+		}while(count <= 10);
+		
+		System.out.println(sum);
+
+	}
+
+}
+
+이런 식으로 만들어준다. 보통은 while문을 쓰기 때문에 잘 안쓰이는 반복문이지만,
+위에 말했던 한 번 실행을 무조건 해줘야 하는 일이 있다면 do-while문을 쓰면 된다.
