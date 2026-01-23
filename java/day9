@@ -1,0 +1,96 @@
+package exam09;
+
+public class ContinueExam {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		
+		for (int i = 1; i <=100; i++) {
+			
+			//짝수만 더하기
+			if(i % 2 != 0) {
+				continue; //여기에서 실행문 종료
+				
+			}
+			
+			sum += i;
+		}
+		
+		System.out.println(sum);
+
+	}
+
+}
+
+오늘은 자바에서의 continue와 break를 배웠다.
+마찬가지로 파이썬과 동일한 기능을 가지고 있다.
+
+package exam09;
+
+public class BreakExam {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		
+		while(true) {
+			
+			int val = (int)(Math.random() *50) + 1;
+			
+			if (val == 30) {
+				System.out.println("30! 종료!");
+				break;
+			}
+			
+			sum += val;
+			System.out.print(val + ", ");
+		}
+		
+		System.out.println();
+		System.out.println(sum);
+
+	}
+
+}
+
+break는 파이썬에서 카페 키오스크나 도서관 대출 시스템을 만들었을 때 많이 써봐서
+앞으로도 코딩을 할 때 활용을 잘 할 수 있을 거 같다.
+
+package exam09;
+
+import java.util.Scanner;
+
+public class UpDownGame {
+
+	public static void main(String[] args) {
+		
+		int target = (int)(Math.random() * 50) + 1;
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int count = 0;
+		int user = 0;
+		for(;;) {
+			System.out.print("숫자를 입력! : ");
+			user = scan.nextInt();
+			
+			if(target == user) {
+				System.out.println("정답! 숫자는 " + user +" 입니다!" + count +" 번 만에 맞췄네요!");
+				break;
+				
+			}else if(target > user) {
+				System.out.println("업!");
+			}else if(target < user) {
+				System.out.println("다운!");
+			}
+			count++;
+			
+		}
+		scan.close();
+
+	}
+
+}
+
+저번에 만들었던 업다운 게임을 브레이크를 써서 만드는 예제였다.
