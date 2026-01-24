@@ -1,0 +1,116 @@
+package exam10;
+
+public class ArrayExam01 {
+
+	public static void main(String[] args) {
+		
+		//5개의 공간을 가지는 배열 선언
+		int[] inArray = new int[5];
+		//문자열 5개 저장 배열
+		String[] strArray = new String[5];
+		
+		//값과 공간을 가지는 배열
+		int[] varArray = {1, 2, 3, 4, 5};
+		
+		//배열 자체를 출력
+		System.out.println(inArray);
+		
+		//배열의 첫번째 값 출력
+		System.out.println(inArray[0]);
+		System.out.println(inArray[2]);
+		
+		System.out.println(varArray[2]);
+		
+		inArray[0] = 10;
+		inArray[1] = 12;
+		inArray[2] = 32;
+		
+		System.out.println(inArray[0]);
+		System.out.println(inArray[2]);
+		
+		System.out.println(strArray[0]);
+
+	}
+
+}
+
+오늘은 배열(array)에 대해 배웠다.
+파이썬의 리스트와 유사해 보이지만, 몇 가지 다른 점이있다.
+1. 같은 데이터 타입만 담을 수 있다.
+2. 배열의 크기를 미리 정해줘야 하고, 정하면 바꿀 수 없다.
+3. 가진 기능이 몇 없다.(length정도)
+
+package exam10;
+
+public class ArrayExam02 {
+
+	public static void main(String[] args) {
+		
+		int[] arr = new int[10];
+		
+		for(int i = 0; i < 10; i++) {
+			
+			arr[i] = (int)(Math.random() * 100) + 1;
+		}
+		
+		int sum = 0;
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + "\t");
+			sum += arr[i];
+					
+		}
+		
+		System.out.println("\n합 : " + sum);
+
+	}
+
+}
+
+배열과 for문을 통해 랜덤 값을 배열에 넣고 그 값들을 더한 코드다.
+자바에서는 배열의 길이를 미리 정해놓아서, for문에 그냥 i < 정해놓은 배열의 길이를 써도 되지만,
+코드가 복잡해지면 그걸 굳이 찾아서 몇개였지 하면서 넣는 것보다 length를 이용하는 것이 좋다.
+
+package exam10;
+
+import java.util.Arrays;
+
+public class ArrayExam03 {
+
+	public static void main(String[] args) {
+		
+		int[] arr = new int[10];
+		//배열에 값을 부여
+		for(int i = 0; i < 10; i++) {
+			
+			arr[i] = (int)(Math.random() * 50) + 1;
+		}
+		System.out.println("정렬 전 :" + Arrays.toString(arr));
+		
+		//버블 정렬
+		int temp = 0;
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < (arr.length - 1) - i; j++) {
+				
+				if(arr[j] > arr[j + 1]) {
+					temp = arr[j + 1];
+					arr[j + 1] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		
+		System.out.println("정렬 후 :" + Arrays.toString(arr));
+
+	}
+
+}
+
+이번에는 랜덤으로 추출 한 정수들을 2중for문을 이용해 차례대로 정렬해주는
+코드를 만들었다. 버블 정렬이라 부른다.
+여기서 j를 돌리는 for문은 인접한 두 수를 비교해서 큰 숫자를 뒤로 보내는 역할을 하고,
+i를 돌리는 for문은 그 작업을 배열 안에 있는 숫자만큼 반복 시키는 역할을 한다.
+for(int j = 0; j < (arr.length - 1) - i; j++)
+여기서 왜 j < (arr.length - 1) 이렇게 -1을 붙이냐하면
+j가 9까지 가버리면 없는 10번째 인덱스랑 비교를 해서 에러를 내기 때문에 마지막 칸의 바로 앞 칸이란 뜻이고,
+뒤의 -i는 이미 정렬이 끝난 수의 개수이기 때문에 제외를 시키는 것이다.
