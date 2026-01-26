@@ -1,0 +1,117 @@
+package exam11;
+
+public class ShallowCopyOfArrayExam {
+
+	public static void main(String[] args) {
+		
+		int[] arr01 = {1, 3, 5, 7, 9};
+		int[] arr02 = null;
+		
+		//얕은 복사
+		arr02 = arr01;
+		
+		for(int i = 0; i < arr02.length; i++) {
+			System.out.print(arr02[i] + "\t");
+		}
+		
+		arr02[1] = 11;
+		arr01[0] = 8;
+		
+		System.out.println();
+		System.out.println("arr02 값 출력 : ");
+		for(int i = 0; i < arr02.length; i++) {
+			System.out.print(arr02[i] + "\t");
+		}
+		System.out.println();
+		System.out.println("arr01 값 출력 : ");
+		for(int i = 0; i < arr01.length; i++) {
+			System.out.print(arr01[i] + "\t");
+		}
+		
+	}
+
+}
+==========================================================
+package exam11;
+
+public class DeepCopyOfArrayExam01 {
+
+	public static void main(String[] args) {
+		
+		int[] arr01 = {1, 3, 5, 7, 9};
+		int[] arr02 = new int[5];
+		
+		
+		// 첫번째 배열의 값들을 loop를 이용해서 대입
+		for(int i = 0; i < arr01.length; i++){
+			arr02[i] = arr01[i];
+		}
+		
+		arr02[1] = 11;
+		arr01[0] = 8;
+		
+		System.out.println();
+		System.out.println("arr02 값 출력 : ");
+		for(int i = 0; i < arr02.length; i++) {
+			System.out.print(arr02[i] + "\t");
+		}
+		System.out.println();
+		System.out.println("arr01 값 출력 : ");
+		for(int i = 0; i < arr01.length; i++) {
+			System.out.print(arr01[i] + "\t");
+		}
+
+	}
+
+}
+=========================================================
+package exam11;
+
+public class DeepCopyOfArrayExam02 {
+
+	public static void main(String[] args) {
+		
+		int[] cards = {1, 6, 9, 8, 2, 7};
+		int[] newCards = new int[5];
+		
+		
+		//복사 메서드를 이용해서 깊은 복사
+		
+		System.arraycopy(cards, 0, newCards, 0, newCards.length);
+		
+		cards[1] = 11;
+		newCards[3] = 20;
+		
+		System.out.println("cards : ");
+		for(int i = 0; i < cards.length; i++) {
+			System.out.print(cards[i] + "\t");
+		
+		}
+		
+		System.out.println();
+		System.out.println("newCards : ");
+		for(int i = 0; i < newCards.length; i++) {
+			System.out.print(newCards[i] + "\t");
+		}
+
+	}
+
+}
+================================================================
+오늘은 배열의 복사를 배웠다. 배열의 복사에는 얕은 복사와 깊은 복사가 있는데
+파이썬의 경우에도
+a = [1, 2, 3, 4, 5]
+b = a
+이렇게 리스트를 옮길 시 a의 값을 바꿀 경우 b의 값도 바뀌지만
+슬라이싱이나 list()함수, copy()메서드 등 여러가지 방법으로 깊은 복사를 할 수 있다.
+자바의 경우에는
+for문으로 a 안의 값들을 빼준 뒤에 그 값들을 b에 넣어주는 식으로 깊은 복사를 할 수 있는데
+더 간단하고 빠른 방법으로 System.arraycopy()를 이용해 복사를 해 줄 수 있다.
+System.arraycopy(원본 배열, 원본 시작 위치, 대상 배열, 대상 시작 위치, 복사 할 개수);
+이렇게 작성하면 된다.
+배열이란 개념이 좀 생소하기도 하고, 굳이 이렇게까지 어렵게 복사를 시켜야 하나 하지만,
+코딩에서 변수의 값 하나 바꾸면 모든 시스템이 에러가 날 수 있기 때문에
+잘 유념해서 공부해야겠다.
+더 추가하면 파이썬강의를 들을 때에는 이런식의 복사를 깊게 알려주는 강의가 없었다.
+파이썬에서도 얕은 복사, 깊은 복사는 같은 개념으로 존재하기 때문에
+자바를 배우면서 파이썬까지 같이 깨우치게 되는 일석이조의 효과를 보는 것 같다.
