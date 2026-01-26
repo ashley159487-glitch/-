@@ -5,124 +5,133 @@ import java.util.Scanner;
 public class LottoSystem {
 
 	public static void main(String[] args) {
-		
-		//1부터 45번의 공을 모두 가진다.
-		int [] lottoMachine = new int[45];
-		//선택된 로또번호를 저장 할 배열
-		int [] lottoBalls = new int[6];
-		//보너스 번호 저장
+
+		// 1부터 45번의 공을 모두 가진다.
+		int[] lottoMachine = new int[45];
+		// 선택된 로또번호를 저장 할 배열
+		int[] lottoBalls = new int[6];
+		// 보너스 번호 저장
 		int bonusNumber = 0;
-		
-		//1 ~ 45개 공을 생성
-		
-		for(int i = 0; i < lottoMachine.length; i++) {
+
+		// 1 ~ 45개 공을 생성
+		for (int i = 0; i < lottoMachine.length; i++) {
 			lottoMachine[i] = i + 1;
 		}
-		
+
 		int count = 0;
-		
-		while(count < 7) {
-			//공을 선택하는 위치를 랜덤함수로 pick
-			int index = (int)(Math.random() * 45);
-			
-			//선택된 index의 값이 0이 아니면 아직 미사용.. 0이면 사용된 위치
-			if(lottoMachine[index] != 0) {
-				
-				if(count < 6) {
-					lottoBalls[count++] = lottoMachine[index];
-				}else {
+
+		while (count < 7) {
+			// 공을 선택하는 위치(배열의 인덱스)를 랜덤함수로 pick
+			// 왜 + 1 을 하지 않냐면 밑의 인덱스 변수는 인덱스 안의 숫자를 뽑는 게 아니라 인덱스 자체를 뽑기 때문에 +1을 할 시
+			// 45번째 인덱스를 뽑으려고 할 것이고, 45번 째 인덱스는 없기 때문에 오류가 나기에 +1을 안 하는 것이다.
+			// 만약 배열 없이 바로 번호를 뽑고 싶으면 +1을 해야한다.
+			int index = (int) (Math.random() * 45); // 처음에는 45-count를 썼다가 지움. 왜냐하면 밑에 if문으로 뽑아간 인덱스 안에는 
+													// 0으로 만들었기 때문에 굳이 반복해야 하는 숫자를 줄일 필요가 없어졌기 때문이다.
+
+			// 선택된 index의 값이 0이 아니면 아직 미사용이고, 0이면 사용된 위치
+			if (lottoMachine[index] != 0) {
+
+				if (count < 6) {
+					lottoBalls[count++] = lottoMachine[index]; // 로또볼 변수에 로또머신 인덱스 안의 숫자를 넣는다. 
+				} else {										// 이 때 덮어쓰지 않기 위해 로또볼 인덱스를 계속 1씩 더해준다.
 					bonusNumber = lottoMachine[index];
-					count++;
+					count++; // 보너스 번호를 뽑고 count를 증가시켜줘야 while문을 빠져나갈 수 있다.
 				}
-				
+
 				// 사용했다는 증명
-				lottoMachine[index] = 0; 
-				
+				lottoMachine[index] = 0;
+
 			}
-			
+
 		}
-		
-		//system 로또 생성 검증
-		for(int i = 0; i < lottoBalls.length; i++) {
-			System.out.print(lottoBalls[i] + " ");
-			
+
+		// system 로또 생성 검증
+		for (int i = 0; i < lottoBalls.length; i++) { 
+			System.out.print(lottoBalls[i] + " "); // 여기 로또볼 변수에는 이미 로또머신에서 뽑아낸 숫자들이 들어가있다.
+
 		}
 		System.out.println("보너스 번호 : " + bonusNumber);
-		
-		
+
 		// 사용자가 선택!
-		count = 0;
+		count = 0; //위의 카운트 변수를 재활용하기 위해 0을 넣음.
 		Scanner scan = new Scanner(System.in);
-		//사용자 로또 저장 배열
+		// 사용자 로또 저장 배열
 		int[] userLotto = new int[6];
-		
-		while(count < 6) {
+
+		while (count < 6) { // 사용자는 보너스번호를 뽑는 것이 아니기 때문에 7이 아닌 6으로 쓰고, 만약 7로 쓰면 위에 설정 한 변수가
+							// 6까지이기 때문에 오류가 난다.
 			System.out.print((count + 1) + " 번째 로또 번호! : ");
 			int balls = scan.nextInt();
 			
-			//중복체크
-			for(int i = 0; i < count; i++) {
-				if(userLotto[i] == balls) {
+			// 이용자가 1~45까지의 수를 벗어난 수를 입력했을 때를 체크
+			if (balls < 1 || balls > 45) {
+				System.out.println("1에서 45까지의 숫자만 입력해주세요.");
+				continue; // 밑의 중복체크를 무시하고 다시 while문의 처음으로 돌아가기 위해 continue를 쓴다.
+			}
+			
+
+			// 중복체크
+			for (int i = 0; i < count; i++) {
+				if (userLotto[i] == balls) {
 					System.out.println(balls + " 는 이미 존자해는 번호!!");
-					balls = 0; //중복되었다는 의미
+					balls = 0; // 중복되었다는 의미
 					break;
 				}
 			}
-			//0은 중복의 의미
-			if(balls != 0) {
+			// 0은 중복의 의미
+			if (balls != 0) {
 				userLotto[count++] = balls;
 			}
 		}
-		
+
 		scan.close();
-		
+		// 파이썬에서는 print(userLotto)하면 이용자가 쓴 번호들을 보여주지만 자바에서는 주소값을 보여준다.
+		// 따라서 자바에서는 for문으로 반복문을 돌려줘서 배열 안의 숫자들을 꺼내줘야 한다. 
 		System.out.println("사용자 로또 : ");
-		for(int i = 0; i < lottoBalls.length; i++) {
+		for (int i = 0; i < userLotto.length; i++) {
 			System.out.print(userLotto[i] + " ");
-			
+
 		}
 		System.out.println();
-		
+
 		int matchCount = 0;
 		boolean isBonus = false;
-		
-		//비교!!
-		for(int i = 0; i < userLotto.length; i++) {
-			for(int j = 0; j < lottoBalls.length; j++) {
-				if(userLotto[i] == lottoBalls[j]) {
+
+		// 비교!!
+		for (int i = 0; i < userLotto.length; i++) {
+			for (int j = 0; j < lottoBalls.length; j++) {
+				if (userLotto[i] == lottoBalls[j]) {
 					matchCount++;
 					break;
 				}
 			}
-			//보너스 번호 맞는 것 찾기
-			if(!isBonus) {
-				if(userLotto[i] == bonusNumber) {
+			// 보너스 번호 맞는 것 찾기
+			if (!isBonus) {
+				if (userLotto[i] == bonusNumber) {
 					isBonus = true;
 				}
 			}
-			
+
 		}
-		
-		//등수 출력
-		if(matchCount == 6) {
+
+		// 등수 출력
+		if (matchCount == 6) {
 			System.out.println("1등");
-		}else if(matchCount == 5 && isBonus) {
+		} else if (matchCount == 5 && isBonus) {
 			System.out.println("2등");
-		}else if(matchCount == 5) {
+		} else if (matchCount == 5) {
 			System.out.println("3등");
-		}else if(matchCount == 4) {
+		} else if (matchCount == 4) {
 			System.out.println("4등");
-		}else if(matchCount == 3) {
+		} else if (matchCount == 3) {
 			System.out.println("5등");
-		}else{
+		} else {
 			System.out.println("븅신ㅋ");
 		}
-			
 
 	}
 
 }
 
-인터넷 강의이다 보니까 너무 빨라서 따라치기도 벅찼다.
-오늘 안에 3번은 돌려봐야겠다...
-다 보고 그 때 다시 정리를 해야겠다.
+어제는 못하고 오늘 다시 강의를 봤다. 코드는 이미 다 적어놨으니까 강의만 보며 중간 중간 궁금한 것들, 알아낸 것들을
+주석처리 해놨다. 그리고 1에서 45사이의 수를 벗어나는 수를 이용자가 적을 때를 대비한 코드도 넣어봤다.
