@@ -1,0 +1,84 @@
+package exam12;
+
+import java.util.Arrays;
+
+public class ArraysExamToString {
+
+	public static void main(String[] args) {
+		
+		//배열선언
+		int[] arr = {5, 7, 1, 4, 11, 9, 10, 2, 4, 3};
+		
+		//배열출력
+		
+		System.out.println("정렬 전 : " + Arrays.toString(arr));
+		
+		//자동으로 오름차순 정렬
+		Arrays.sort(arr);
+		
+		System.out.println("정렬 후 : " + Arrays.toString(arr));
+		
+
+	}
+
+}
+sort메서드를 이용한 오름차순 정렬을 배웠다.
+파이썬과 똑같은 방식으로 구동된다.
+sort(변수)로 정렬시킨 후 출력.
+==================================================================
+package exam12;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class ArraysSortUpToDowm {
+
+	public static void main(String[] args) {
+		
+		Integer[] arr = {5, 7, 1, 4, 11, 9, 10, 2, 4, 3};
+		
+		System.out.println("정렬 전 : " + Arrays.toString(arr));
+		
+		//내림차순 정렬
+		Arrays.sort(arr, Comparator.reverseOrder());
+		
+		System.out.println("정렬 후 : " + Arrays.toString(arr));
+
+	}
+
+}
+이번에는 내림차순 정렬을 배웠다.
+자바에서 내림차순으로 정렬 하려면 Comparator.reverseOrder() 이런 메서드를 써야 하는데
+이 정렬 기준은 객체를 대상으로만 작동하도록 설계되어있다.
+int는 자료형이지 객체가 아니므로, Wrapper 클래스인 Integer로 객체들의 배열을 만들어야
+내림차순 정렬 기능이 있는 메서드를 사용 할 수 있다.
+======================================================================================
+package exam12;
+
+import java.util.Arrays;
+
+public class ArraysDeepCopyExam {
+
+	public static void main(String[] args) {
+		
+		int[] cards = {3, 7, 10, 11, 12};
+		
+		//깊은복사
+		// copyOf(복사대상, 복사길이)
+		int[] newCards = Arrays.copyOf(cards, cards.length);
+		
+		System.out.println("복사 후 : " + Arrays.toString(newCards));
+      
+		// 깊은 복사의 증명
+		cards[1] = 10;
+		newCards[3] = 22;
+		
+		System.out.println("cards : " + Arrays.toString(cards));
+		System.out.println("newCards : " + Arrays.toString(newCards));
+
+	}
+
+}
+이번에는 깊은 복사를 다른 메서드로 하는 방법을 배웠다.
+ Arrays.copyOf(복사대상, 복사 할 길이); 이 메서드로 복사해주면
+깊은 복사가 된다. 위에 깊은 복사가 되는지 확인하는 증명도 있다.
