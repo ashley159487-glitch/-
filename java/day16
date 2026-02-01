@@ -1,0 +1,36 @@
+package exam15;
+
+public class Car {
+	
+	int year; //연도
+	String carName = "벤츠"; //자동차 이름
+	
+	
+	public void go() {
+		System.out.println(carName + " 이(가) 출발합니다.");
+		
+		
+	}
+
+}
+=============================================================
+package exam15;
+
+public class CarMain {
+
+	public static void main(String[] args) {
+		
+		Car car = new Car();
+		
+		car.year = 2020;
+		car.carName = "소나타";
+		car.go();
+
+	}
+
+}
+=============================================================
+자바는 파이썬과 다르게 한 파일에 하나의 메인클래스 원칙을 준수한다.
+그 클래스의 이름이 파일 자체의 이름이 된다.
+클래스를 만드는 법은 파이썬과 유사하다. 다를게 없다.
+클래스를 만들고 메서드를 만들어서 클래스명.메서드 이렇게 동작시키는 원리는 같다.
