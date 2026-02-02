@@ -1,0 +1,72 @@
+package exam16;
+
+public class Student {
+	
+	static String school = "자바고등학교";
+	String myName;
+	int grade;
+	
+	 void schoolInfo() {
+		System.out.println("저는 " + this.myName +"이고 학교는 " + school +" 입니다.");
+	}
+
+}
+========================================================================================
+package exam16;
+
+public class StudentMain {
+
+	public static void main(String[] args) {
+		
+		
+		Student st01 = new Student();
+		Student st02 = new Student();
+		
+		st01.myName = "홍길동";
+		st02.myName = "고길동";
+		Student.school = "강남 고등학교";
+		
+		st01.schoolInfo();
+		System.out.println("나의 학교는 " + Student.school);
+		st02.schoolInfo();
+	}
+
+}
+=============================================================================================
+package exam16;
+
+public class MathCalc {
+	static double pi = 3.14;
+	
+	static void print(double result) {
+		System.out.println("결과 : " + result);
+	}
+
+}
+============================================================================================
+package exam16;
+
+import java.util.Scanner;
+
+public class MathMain {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("넓이를 구할 원의 반지름 : ");
+		int ban = scan.nextInt();
+		
+		double result = (ban * ban) * MathCalc.pi;
+		
+		MathCalc.print(result);
+
+	}
+
+}
+==========================================================================================
+오늘은 static에 대해 배웠다. 보통 자바에서는 변수든 메서드든 new를 통해 객체를 만들어서 써야하는데,
+static을 붙이면 그럴 필요가 없어진다.
+그 이유는 static이 붙으면 프로그램이 시작 할 때 이미 메모리에 올라가 있어서 그렇다.
+그러므로 자주 써야하는 변수나 함수는 static으로 만들어서 쓰면 편해지지만, 그렇다고 static을 남발해서는 안되는 게
+static은 프로그램이 끝날 때까지 계속 메모리에 남아있기 때문에 보통 유틸리티 함수나 상수처럼 변하지 않는 값들을 공유할 때만 써야한다.
