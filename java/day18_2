@@ -1,0 +1,29 @@
+package exam17;
+
+public class Ex08_03 {
+
+	public static void main(String[] args) {
+		
+		int money = 37000;
+		int count = 0;
+		while(true) {
+			if(money < 1500) {
+				System.out.println("버스를" + count + "번 탔음.");
+				System.out.println("버스카드 : " + money + " 원 남음. 버스카드 충전요망!!");
+				return;
+				
+			}
+			
+			money -= 1500;
+			count++;
+		}
+
+	}
+
+}
+=========================================================================================
+return의 활용에 대해 배웠다.
+return은 반복문에서 break의 기능을 대신 수행 해주기도 한다.
+위의 코드처럼 반복문을 빠져나가고 싶을 때 break대신 return을 써줘도 된다.
+return과 break의 차이점은 break는 반복문을 끝내고 그 밑에 다른 출력문이 있다면 그걸 출력 해주지만
+return은 상관없이 메서드 자체를 끝내버린다.
