@@ -1,0 +1,20 @@
+package exam17;
+
+public class Ex08_1 {
+	
+	static public void hello() {
+		System.out.println("안녕하세요");
+	}
+
+	public static void main(String[] args) {
+		
+			Ex08_1.hello();
+	}
+
+}
+=================================================
+오늘은 메서드에 대해 배웠다.
+위에처럼 메서드를 만들고 클래스.메서드를 하면 메서드에서 만든 것이 출력된다.
+static 메서드는 Ex08_1.hello() 처럼 클래스 이름으로 직접 부른다.
+그리고 여기서는 static을 앞에 썼는데 이것도 무방하다.
+앞에 써도 되고, 뒤에 써도 된다.
