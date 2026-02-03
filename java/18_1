@@ -1,0 +1,22 @@
+package exam17;
+
+public class Calc {
+	
+	//매개변수가 있고, return타입이 있는 함수
+	public static int sumArray(int[] nums) {
+		int sum = 0;
+		for(int i =0; i < nums.length; i++) {
+			sum += nums[i];
+		}
+		return sum;
+	}
+	
+	//매개변수가 있고, return타입이 없는 함수
+	public static void printResult(int result) {
+		System.out.println("결과 : " + result);
+	}
+
+}
+======================================================
+자바에서는 return값을 반환 하려면 꼭 반환해야 할 자료형을 메서드에 선언 해줘야 하고, 꼭 return을 해줘야 한다.
+return을 안해도 되면 void를 쓰면 된다.
