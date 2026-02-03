@@ -1,0 +1,46 @@
+package exam17;
+
+public class Bank {
+	//private는 가장 최상위 접근 권한자기 때문에 내부에서만 사용 가능하다.
+	//그러므로 private로 접근이 제한 된 변수를 이용 할 때는 setter와 getter를 이용한다.
+	private int money;
+	
+	//입금
+	public void setMoney(int money) {
+		if(money < 0) {
+			System.out.println("값이 잘못 되었습니다.");
+			return; //일찍 종료
+		}
+		this.money = money;
+	}
+	
+	//돈 출력
+	public int getMoney() {
+		return money;
+	}
+	
+
+}
+==========================================
+자바에서는 변수 앞에 private를 넣어서 다른 곳에서 특정한 방법으로밖에 접근을 하게하는 방법이있다.
+위 처럼 코드를 만들어두면 변수 money를 다른 곳에서 쓰려면 getter와 setter가 필요하다.
+============================================
+package exam17;
+
+public class BankMain {
+
+	public static void main(String[] args) {
+		Bank b = new Bank();
+		
+		
+		b.setMoney(-500);
+		b.setMoney(10000);
+		
+		System.out.println("잔금 : " + b.getMoney());
+
+	}
+
+}
+================================================
+위의 Bank클래스에는 static이 없으므로 bank객체를 생성하고, 거기에 값을 집어넣을 때는
+무조건 set을 붙여야하고, 불러올 때도 get을 붙여야 한다.
