@@ -1,0 +1,46 @@
+package exam17;
+
+public class Person {
+	
+	private int age;
+	private String myName;
+	
+	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		if(age < 0) {
+			System.out.println("입력값이 잘못되었습니다. 0 이상으로 입력해주세요");
+			return;
+		}
+		this.age = age;
+	}
+	public String getMyName() {
+		return myName;
+	}
+	public void setMyName(String myName) {
+		this.myName = myName;
+	}
+  =============================================================================
+  그리고 자바에서는 변수를 설정해놓으면 getter와 setter 메서드를 자동으로 만드는 기능이 있다.
+  위의 코드는 그 기능을 사용해 만든 코드다.
+  =============================================================================
+  package exam17;
+
+public class PersonMain {
+
+	public static void main(String[] args) {
+
+		Person p01 = new Person();
+		
+		p01.setMyName("홍길동");
+		p01.setAge(300);
+		
+		System.out.println("나는 " + p01.getMyName() +"이고, 나이는 " + p01.getAge() + "살 이다.");
+
+	}
+
+}
+=================================================================================
+  아까 Bank때와 마찬가지로 static이 없기 때문에 객체를 생성해주고, set으로 이름과 나이를 집어넣은 후 get으로 꺼내준다.
