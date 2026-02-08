@@ -1,0 +1,95 @@
+package exam20.upper;
+
+public class Book {
+	
+	protected String title;
+	int price;
+	
+	public void info() {
+		System.out.println("책의 제목은 " + this.title + "이고 가격은 " + this.price +"원 입니다.");
+	}
+
+}
+=====================================================================================================
+package exam20.upper;
+
+public class ComicBook extends Book {
+	
+	//this --> 나 자신
+	//super --> 내 상위 클래스 키워드
+	
+	public ComicBook(String title, int price) {
+		super();
+		this.title = title;
+		this.price = price;
+		
+	}
+
+}
+=======================================================================================================
+package exam20.upper;
+
+public class Book2 {
+	
+	String title;
+	int price;
+	
+	public Book2(String title, int price) {
+		this.title = title;
+		this.price = price;
+	}
+	
+	public void info() {
+		System.out.println("책의 제목은 " + this.title + "이고 가격은 " + this.price +"원 입니다.");
+	}
+
+}
+==========================================================================================================
+package exam20.upper;
+
+public class Novel extends Book2 {
+	
+	public Novel(String title, int price) {
+		//부모클래스의 생성자가 파라메터가 없는 기본 생성자가 아닐 경우 
+		//시스템이 자동으로 부모클래스의 생성자를 만들 수 없기 때문에
+		//개발자가 직접 호출 해줘야 한다.
+		super(title, price);
+	}
+
+}
+===========================================================================================================
+package exam20.upper;
+
+public class BookStore {
+
+	public static void main(String[] args) {
+		
+		ComicBook comic = new ComicBook("내친구 뽀로로", 15000);
+		comic.info();
+		
+		
+		Novel novel = new Novel("제인에어", 14000);
+		novel.info();
+
+	}
+
+}
+===========================================================================================================
+package exam20.override;
+
+import exam20.upper.Book;
+import exam20.upper.ComicBook;
+
+public class BookCare {
+	public static void main(String[] args) {
+		
+		ComicBook b = new ComicBook("트랜스포머", 30000);
+		
+		// default 제한자의 경우, 같은 패키지 내의 클래스끼리만 접근 가능.
+		// BookCare는 다른 패키지의 클래스라서 접근이 안된다.
+		//b.title = "33";
+}
+}
+=============================================================================================================
+클래스의 상속에 대해 배웠다. 파이썬과 같은 원리이지만 상속을 받을 때 extends와 부모클래스의 이름을 자식클래스 이름 뒤에 써줘야 한다.
+맨 마지막의 코드의 경우에는 다른 패키지에 생성한 클래스인데 default제한자일 경우 다른 패키지에서의 접근이 안되는 걸 보여준 예제이다.
