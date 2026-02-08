@@ -1,5 +1,0 @@
-SELECT COUNT(*) AS FISH_COUNT FROM FISH_INFO
-WHERE LENGTH IS NULL
-
-~의 수를 출력하시오 라는 문구가 나오면 COUNT(*)를 떠올리기
-NULL은 =랑 같이 못쓰고 무조건 IS로 써야 함.

@@ -1,6 +1,0 @@
-SELECT FACTORY_ID, FACTORY_NAME, ADDRESS FROM FOOD_FACTORY
-WHERE ADDRESS LIKE '강원도%'
-ORDER BY FACTORY_ID ASC
-
-일부만 비슷해도 된다(검색어 느낌)? → LIKE와 %
-IN은 데이터가 완벽하게 똑같아야 검색이 된다!

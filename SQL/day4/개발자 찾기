@@ -1,8 +1,0 @@
-SELECT ID, EMAIL, FIRST_NAME, LAST_NAME FROM DEVELOPER_INFOS
-WHERE SKILL_1 = 'PYTHON' OR SKILL_2 = 'PYTHON' OR SKILL_3 = 'PYTHON' 
-ORDER BY ID ASC
-
-WHERE 'PYTHON' IN (SKILL_1, SKILL_2, SKILL_3)
-OR를 빼고 위의 방법처럼 쓸 수도 있지만, OR가 틀린 것이 아니기 때문에
-둘 다 써도 무방하다.
-그리고 LAST_NAME은 이름이다. 헷갈리지 마라.
