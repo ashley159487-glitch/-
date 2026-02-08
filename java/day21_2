@@ -1,0 +1,46 @@
+package exam20.override;
+
+public class Computer {
+	
+	public void powerOn() {
+		System.out.println("컴퓨터 전원이 켜집니다.");
+	}
+	public void powerOff() {
+		System.out.println("컴퓨터 전원이 꺼집니다.");
+	}
+
+}
+===========================================================
+package exam20.override;
+
+public class Samsong extends Computer {
+	
+	
+	public void powerOn() {
+		super.powerOn();
+		System.out.println("헬로우!! 삼송!!");
+		System.out.println("컴퓨터가 실행됩니다.");
+	}
+	public void powerOff() {
+		super.powerOff();
+		System.out.println("굿바이!! 삼송!!");
+		System.out.println("컴퓨터가 종료됩니다.");
+
+	}
+}
+=============================================================
+package exam20.override;
+
+public class CompWorld {
+
+	public static void main(String[] args) {
+		
+		Samsong comp = new Samsong();
+		comp.powerOn();
+		comp.powerOff();
+
+	}
+
+}
+==============================================================
+오버라이딩의 예제이다. 마찬가지로 파이썬과 동일한 개념이다.
