@@ -1,0 +1,74 @@
+package exam23.exam.type;
+
+public class Car {
+	
+	private String myName;
+	
+	public Car(String myName) {
+		this.myName = myName;
+	}
+	public String getMyName() {
+		return this.myName;
+	}
+
+}
+==================================
+package exam23.exam.type;
+
+public class Bus extends Car {
+	
+	public Bus(String myName) {
+		super(myName);
+	}
+	
+	public void getInfo() {
+		System.out.println("버스 이름은 " + this.getMyName() + " 입니다.");
+	}
+
+}
+====================================
+package exam23.exam.type;
+
+public class Taxi extends Bus{
+	
+	public Taxi(String myName){
+		super(myName);
+	}
+	public void getInfo() {
+		System.out.println("택시 이름은 " + this.getMyName() + " 입니다.");
+	}
+
+}
+====================================
+package exam23.exam.type;
+
+public class TypeTestMain {
+
+	public static void main(String[] args) {
+		
+		Bus b = new Bus("버스");
+		Taxi t1 = new Taxi("개인택시");
+		
+		//형변환
+		Car car = t1;
+		
+		b.getInfo();
+		t1.getInfo();
+		
+		//부모타입으로 형변환 되면 자식클래스가 가진 기능이나 속성을 사용할 수 없다.
+		//car.getinfo();
+		
+		Taxi t2 = (Taxi)car;
+		
+		t2.getInfo();
+		
+		//클래스의 형변환
+		//1. 강제 형변환, 자동 형변환 둘 다 가능하다.
+		//2. 상속관계가 있을 때만 가능하다.
+		//3. 1차 상속관계가 아니라도 가능하다.
+		//4. 자식 -> 부모 만 가능하다.
+		//5. 형변환 후에 부모타입으로 변경할 경우 class인 경우는 자식의 속성이나 기능 사용 불가능하다.
+
+	}
+
+}
