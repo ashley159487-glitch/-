@@ -1,0 +1,5 @@
+WHERE 절에서는 집계 함수(AVG, SUM, COUNT 등)를 직접 쓸 수 없다.
+써야하는 경우가 생길 경우 서브쿼리를 이용해 비교대상을 만들어서 써야한다.
+========================================================================
+SELECT * FROM tips
+WHERE total_bill > (SELECT avg(total_bill) FROM tips)
