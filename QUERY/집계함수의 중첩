@@ -1,0 +1,6 @@
+SQL에서는 집계 함수를 중첩해서 (AVG(SUM(...))) 사용할 수 없다.
+이런 류의 문제도 서브쿼리를 이용해서 풀어야 한다.
+==============================================================
+SELECT round(avg(avg_sales), 2) AS avg_sales
+FROM (SELECT sum(total_bill) as avg_sales FROM tips
+GROUP BY day) temp
