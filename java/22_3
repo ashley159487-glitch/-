@@ -1,0 +1,34 @@
+package exam23.exam.instance;
+
+import exam23.exam.manytype.Computer;
+import exam23.exam.manytype.LZCom;
+import exam23.exam.manytype.SamsongCom;
+
+public class CompareInstance {
+	
+	public static void getMyType(Computer com) {
+		
+		if(com instanceof SamsongCom) {
+			System.out.println("삼송컴퓨터!");
+		}else if (com instanceof LZCom) {
+			System.out.println("LZ컴퓨터!");
+		}else {
+			System.out.println("넌 누구니");
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		SamsongCom sam = new SamsongCom();
+		LZCom lz = new LZCom();
+		
+		CompareInstance.getMyType(sam);
+		CompareInstance.getMyType(lz);
+	}
+
+}
+====================================================
+instanceof 연산자
+A instanceof B
+여기서 A는 대상 B는 가지고있는 타입
+객체가 가지고있는 데이터 타입이 어떤 것인지를 분별해내는 타입.
