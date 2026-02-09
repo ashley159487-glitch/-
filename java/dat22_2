@@ -1,0 +1,104 @@
+package exam23.exam.manytype;
+
+public interface Computer {
+	
+	public abstract void powerOn();
+	void powerOff();
+}
+===================================
+package exam23.exam.manytype;
+
+public class SamsongCom implements Computer {
+
+	@Override
+	public void powerOn() {
+		System.out.println("사랑해요 삼송!");
+		System.out.println("전원이 켜집니다.");
+		
+		
+	}
+
+	@Override
+	public void powerOff() {
+		System.out.println("사랑해요 삼송!");
+		System.out.println("전원이 꺼집니다.");
+		
+	}
+
+}
+================================================
+package exam23.exam.manytype;
+
+public class LZCom implements Computer {
+
+	@Override
+	public void powerOn() {
+		System.out.println("환영합니다 LZ!");
+		System.out.println("전원이 켜집니다.");
+		
+	}
+
+	@Override
+	public void powerOff() {
+		System.out.println("고맙습니다 LZ!");
+		System.out.println("전원이 꺼집니다.");
+		
+	}
+
+}
+=================================================
+package exam23.exam.manytype;
+
+public class ComputerRoom {
+	
+	private Computer com1;
+	private Computer com2;
+	
+	
+	public Computer getCom1() {
+		return com1;
+	}
+	public void setCom1(Computer com1) {
+		this.com1 = com1;
+	}
+	public Computer getCom2() {
+		return com2;
+	}
+	public void setCom2(Computer com2) {
+		this.com2 = com2;
+	}
+	
+	public void allPowerOn() {
+		this.com1.powerOn();
+		this.com2.powerOn();
+	}
+	
+	public void allPowerOff() {
+		this.com1.powerOff();
+		this.com2.powerOff();
+
+}
+}
+============================================
+package exam23.exam.manytype;
+
+public class CompMain {
+
+	public static void main(String[] args) {
+
+
+		ComputerRoom room = new ComputerRoom();
+		
+		room.setCom1(new LZCom());
+		room.setCom2(new SamsongCom());
+		
+		room.allPowerOn();
+		room.allPowerOff();
+
+	}
+
+}
+=============================================
+자바의 다형성에 대해 배웠다. 클래스 타입 변환이 존재하는 이유는 다형성을 구현하기 위함이다.
+타입변환은 다형성을 구현하는 방법의 하나일 뿐이다. 다형성 > 타입변환
+상속 + 메서드 오버라이딩 + 클래스 타입 변환
