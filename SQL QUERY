@@ -1,0 +1,11 @@
+LEAD.
+LEAD()는 현재 행을 기준으로 다음 행의 값을 미리 엿볼 수 있게 해준다.
+사용법: LEAD(컬럼명) OVER (ORDER BY 날짜)
+이렇게 하면 '오늘'의 데이터 옆에 '내일'의 데이터를 나란히 붙일 수 있다.
+=================================================================================================
+SELECT today, next_day, pm10, next_pm10
+FROM (SELECT measured_at AS today, LEAD(measured_at) OVER (ORDER BY measured_at) AS next_day,
+pm10, LEAD(pm10) OVER (ORDER BY measured_at) AS next_pm10 FROM measurements) temp
+WHERE next_pm10 > pm10
+=================================================================================================
+LEAD가 쓰인 예제.
