@@ -1,0 +1,47 @@
+package exam21.abs;
+
+public abstract class Receipt {
+	
+	private String chef;
+	
+	public Receipt(String chef) {
+		this.chef = chef;
+	}
+	
+	public void info() {
+		System.out.println("이 레시피는 " + this.chef + "의 것입니다.");
+	}
+
+}
+======================================================================
+package exam21.abs;
+
+public class PastaReceipt extends Receipt {
+	
+	public PastaReceipt(String chef) {
+		super(chef);
+	}
+	
+	public void makeSource() {
+		System.out.println("파스타 소스는 직접 만듭니다.");
+	}
+
+}
+======================================================================
+package exam21.abs;
+
+public class Restaurant {
+
+	public static void main(String[] args) {
+		
+		PastaReceipt ps = new PastaReceipt("최현석");
+		ps.info();
+		
+		//추상화 클래스는 생성자를 통한 객체 선언이 안된다.
+		//Receipt res = new Receipt("이연복");
+
+	}
+
+}
+====================================================================
+추상화 클래스만 생성
