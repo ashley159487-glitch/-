@@ -1,0 +1,44 @@
+package exam21.abs;
+
+public abstract class Phone {
+	
+	//추상화 메서드
+	public abstract void openningLogo();
+	
+	public void powerOn() {
+		this.openningLogo(); //자식 클래스가 정의한 메서드 내용이 출력
+		System.out.println("핸드폰이 켜집니다.");
+	}
+	
+	public void powerOff() {
+		System.out.println("핸드폰이 꺼집니다.");
+	}
+
+}
+=====================================================================
+package exam21.abs;
+
+public class SamsongPhone extends Phone {
+
+	@Override
+	public void openningLogo() {
+		System.out.println("@@@@@@@@@삼송@@@@@@@@");
+		
+	}
+
+}
+======================================================================
+package exam21.abs;
+
+public class PhoneTest {
+
+	public static void main(String[] args) {
+		SamsongPhone sam = new SamsongPhone();
+		sam.powerOn();
+		sam.powerOff();
+
+	}
+
+}
+======================================================================
+추상 클래스, 추상 메서드
