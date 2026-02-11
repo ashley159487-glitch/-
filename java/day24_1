@@ -1,0 +1,104 @@
+package exam22.inter;
+
+public interface Phone {
+	
+	//상수
+	public static final int MAX_BATTERY_CAPACITY = 100;
+	
+	public abstract void powerOn();
+	void powerOff();
+	boolean isOn();
+	void watchYoutube();
+	void charge();
+
+}
+=======================================================
+package exam22.inter;
+
+public class ApplePhone implements Phone {
+	
+	private int batteryCapacity = 40;
+	private boolean isOn = false;
+
+	@Override
+	public void powerOn() {
+		if(batteryCapacity > 30) {
+			System.out.println("@@@@@Power on@@@@@");
+			isOn = true;
+		}else {
+			System.out.println("@@@@@LowBattery@@@@@");
+		}
+		
+	}
+
+	@Override
+	public void powerOff() {
+		System.out.println("@@@@@Power off@@@@@");
+		isOn = false;
+		
+	}
+
+	@Override
+	public boolean isOn() {
+		if(isOn) {
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+	}
+
+	@Override
+	public void watchYoutube() {
+		if(batteryCapacity > 10) {
+			System.out.println("========watching Youtube=========");
+			batteryCapacity -= 10;
+			System.out.println("Battery is " + this.batteryCapacity +"%");
+		}else {
+			System.out.println("========low Battery=========");
+			powerOff();
+		}
+		
+	}
+
+	@Override
+	public void charge() {
+		if(this.batteryCapacity < Phone.MAX_BATTERY_CAPACITY) {
+			System.out.println("========start Charging=========");
+			//5프로 이상 차이 날 때는 5를 더하고 아니면 100에서 현재 값을 뺀 만큼 더하기
+			if(Phone.MAX_BATTERY_CAPACITY - this.batteryCapacity > 5) {
+				this.batteryCapacity += 5;
+			}else {
+				this.batteryCapacity += (Phone.MAX_BATTERY_CAPACITY - this.batteryCapacity);
+			}
+			
+		}
+		
+	}
+	
+
+}
+=========================================================================================
+package exam22.inter;
+
+public class PhoneMain {
+
+	public static void main(String[] args) {
+		
+		ApplePhone phone = new ApplePhone();
+		phone.powerOn();
+		phone.watchYoutube();
+		phone.charge();
+		phone.charge();
+		phone.watchYoutube();
+		phone.watchYoutube();
+		phone.watchYoutube();
+		phone.watchYoutube();
+		
+
+	}
+
+}
+========================================================================================
+인터페이스에서 추상클래스를 만들어서 코드 만들기 예제.
