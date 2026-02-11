@@ -1,0 +1,14 @@
+SQL에서 '주문 건수'나 '방문자 수'를 구할 때는 한 사람이 여러 번 기록될 수 있으므로 DISTINCT를 반드시 고려하자
+
+FROM: 테이블을 가져온다.
+WHERE: 개별 행들을 필터링한다. (아직 그룹으로 묶기 전!)
+GROUP BY: 데이터를 그룹별로 묶는다.
+HAVING: 그룹화된 결과를 필터링한다.
+100건 이상이라는 조건은 판매자별로 묶어서 숫자를 세어본(COUNT) 뒤에야 알 수 있는 정보죠? 그래서 WHERE가 아니라 HAVING을 써야 합니다.
+
+항상 그룹으로 묶이기 전에 구해야 할 데이터인지, 아니면 묶고 난 후 구해야 할 데이터인지 구분하자.
+=======================================
+SELECT seller_id, count(DISTINCT order_id) AS orders
+FROM olist_order_items_dataset
+GROUP BY seller_id
+HAVING orders >= 100
