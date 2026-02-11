@@ -1,0 +1,81 @@
+package exam.inter2;
+
+public interface MicroPhone {
+	void sing();
+
+}
+===============================
+package exam.inter2;
+
+public interface Speaker {
+	void music();
+
+}
+===============================
+package exam.inter2;
+
+public class BluetoothMIC implements MicroPhone, Speaker{
+
+	@Override
+	public void music() {
+		System.out.println("마이크에 장착된 스피커에서 소리가 나옵니다.");
+		
+	}
+
+	@Override
+	public void sing() {
+		System.out.println("마이크에 대고 노래를 부릅니다.");
+		
+	}
+
+}
+========================================================================
+package exam.inter2;
+
+public class TestMain {
+	public static void main(String[] args) {
+		BluetoothMIC mic = new BluetoothMIC();
+		
+		mic.sing();
+		mic.music();
+	
+}
+}
+======================================================================
+package exam.inter2;
+
+public interface BluetoothMIC2 extends MicroPhone, Speaker{
+
+}
+======================================================================
+package exam.inter2;
+
+public class NewMic implements BluetoothMIC2 {
+	
+	@Override
+	public void music() {
+		System.out.println("마이크에 장착된 스피커에서 소리가 나옵니다.");
+		
+	}
+
+	@Override
+	public void sing() {
+		System.out.println("마이크에 대고 노래를 부릅니다.");
+	}
+
+}
+=====================================================================
+package exam.inter2;
+
+public class MicMain {
+	public static void main(String[] args) {
+		
+		NewMic mic = new NewMic();
+		
+		mic.sing();
+		mic.music();
+	}
+
+}
+========================================================================
+두 개의 인터페이스를 하나로 상속받아 코드 만들기 예제.
