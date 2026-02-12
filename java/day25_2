@@ -1,0 +1,76 @@
+package exam24.st.cls;
+
+public class PrintOut {
+	
+	//private String line = "\n";
+	
+	//정적 클래스 선언
+	public static class Out{
+		public void println(String str) {
+			System.out.println(str);
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		PrintOut.Out out = new PrintOut.Out();
+		String str = "정적 내부 클래스";
+		
+		
+		out.println(str);
+	}
+
+}
+====================================================
+정적 클래스 선언 방법.
+=====================================================
+package exam24.local.cls;
+
+public class Unit {
+	
+	private int speed = 10;
+	
+	public void getUnit(String type, String unitName) {
+		
+		class Tank{
+			public void move() {
+				System.out.println(unitName + "이(가)" + speed + " 속도로 이동.");
+			}
+		}
+		
+		class Ship{
+			public void move() {
+				System.out.println(unitName + "이(가)" + speed + " 속도로 이동.");
+			}
+	}
+		
+		Tank t = null;
+		Ship s = null;
+		if(type.equals("ship")) {
+			s = new Ship();
+			s.move();
+		}else if(type.equals("tank")) {
+			t = new Tank();
+			t.move();
+		}
+		
+		
+}
+}
+=================================================================================
+package exam24.local.cls;
+
+public class UnitMain {
+
+	public static void main(String[] args) {
+		
+		Unit unit = new Unit();
+		
+		unit.getUnit("tank", "K9");
+		unit.getUnit("ship", "배");
+
+	}
+
+}
+==================================================================================
+지역 클래스 선언과 호출
