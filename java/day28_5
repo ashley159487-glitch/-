@@ -1,0 +1,59 @@
+package exam26.exam.excp;
+
+public class CustomException extends Exception {
+	
+	private static final long serialVersionUID = -3049530461562154302L;
+	private String message;
+	
+	public CustomException() {
+		
+	}
+	
+	public CustomException(String message) {
+		this.message = message;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+}
+========================================================================
+package exam26.exam.excp;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class CustomExceptionMain {
+
+	public static void main(String[] args) {
+		
+		
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			
+			System.out.println("나이를 입력 하십시오!!");
+			int age = scan.nextInt();
+			
+			if(age < 1) {
+				throw new CustomException("입력 범위 오류");
+			}else if(age < 8) {
+				System.out.println("유아");
+			}else if(age < 15) {
+				System.out.println("청소년");
+			}else {
+				System.out.println("성인");
+			}
+			
+		}catch (CustomException e) {
+			System.out.println(e.getMessage() == null ? "입력 범위 오류!" : e.getMessage());
+		}catch (InputMismatchException e) {
+			System.out.println(e.getMessage() == null ? "입력 오류!" : e.getMessage());
+		}
+
+	}
+
+}
+==========================================================================================
+직접 예외를 만들어서 발생시킬 수 있다.
