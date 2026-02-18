@@ -1,0 +1,45 @@
+package exam26.exam.excp;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ThrowableExam {
+	
+	public static void checkYourSelf(Scanner scan) throws InputMismatchException{
+		
+		System.out.println("1. 사람과 어울리는 것이 좋다 / 2. 혼자 있는 것이 좋다");
+		System.out.println("선택 >> ");
+		
+		int check = scan.nextInt();
+		
+		if(check == 1) {
+			System.out.println("당신은 외향적");
+		}else {
+			System.out.println("당신은 내향적");
+		}
+	}
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			
+			System.out.println("========== 성격유형 검사를 시작합니다.===========");
+			ThrowableExam.checkYourSelf(scan);
+			
+		}catch(InputMismatchException e) {
+			System.out.println("키보드 입력이 잘못되었습니다.");
+		}finally {
+			if(scan != null) {
+				scan.close();
+			}
+		}
+		
+
+	}
+
+}
+===================================================================================
+try-catch는 예외를 수습해서 프로그램을 계속 돌리려는 목적이 강하지만, throw는 프로그램의 흐름을 끊기 위해 쓴다.
+즉 에러임을 알리고, 에러가 안나게 미리 방지해주는 역할을 한다.
