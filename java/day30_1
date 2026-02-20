@@ -1,0 +1,65 @@
+package exam28;
+
+public class Data {
+	
+	private int value;
+	
+	public Data(int value) {
+		this.value = value;
+	}
+	
+	
+	@Override
+	public boolean equals(Object d) {
+		boolean isTrue = false;
+		
+		if(this == d) {
+			return !isTrue;
+		}
+		
+		if(d instanceof Data) {
+			if(this.value == ((Data)d).value) {
+				isTrue = true;
+			}
+			
+		}
+		return isTrue;
+	}
+	
+	
+	public String toString() {
+		String str = "값 : " + this.value;
+		return str;
+	}
+
+}
+==================================================
+package exam28;
+
+public class CompareMain {
+
+	public static void main(String[] args) {
+		
+		Data val01 = new Data(10);
+		Data val02 = new Data(10);
+		
+		System.out.println("val01 == val02 : " + (val01 == val02));
+		System.out.println("val01 == val02 : " + (val01.equals(val02)));
+
+	}
+
+}
+==================================================================
+package exam28;
+
+public class PrintObj {
+
+	public static void main(String[] args) {
+		
+		Data val = new Data(10);
+		
+		System.out.println(val);
+		
+	}
+
+}
