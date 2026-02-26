@@ -1,0 +1,137 @@
+import pandas as pd
+
+pd.set_option('display.unicode.east_asian_width', True)
+
+#데이터프레임 생성
+data = {'성적' : ['B', 'A', 'C', 'F', 'D'], '키' : [175, 165, 170, 160, 166], '나이' : [25, 23, 22, 21, 24]}
+df = pd.DataFrame(data, index=['철이', '영이', '돌이', '순이', '훈이'])
+print(df.to_string(col_space=5, justify='center'))
+
+#자료구조 변경하기
+
+#행 추가
+#행의 이름과 값을 loc을 이용해서 직접 추가
+#행의 값을 list로 설정
+#행 직접 삽입
+df.loc['복이',:]=['B', 180, 20]
+df = df.astype({'키' : int, '나이' : int})
+print(df)
+
+#열 추가
+#추가할 열을 series로 선언하고 dataframe에 직접 추가
+#열 직접 삽입
+df['휴학'] = pd.Series({'철이' : 0, '영이' : 1, '돌이' : 0, '순이' : 0, '훈이' : 1, '복이' : 0})
+print(df.to_string(col_space=5))
+
+#insert()함수를 이용해서 지정된 위치에 열을 추가
+#열 삽입
+df.insert(loc=1, column='학과', value=['cs', 'ee', 'cs', 'ee', 'ai', 'cs'])
+print(df.to_string(col_space=5))
+
+#열 삭제 axis = 1
+#drop 명령어를 이용한 열 삭제
+#axis = 1을 선택할 경우 열을 삭제함
+df = df.drop('휴학', axis=1)# = df.drop(columns='휴학')
+print(df.to_string(col_space=5))
+
+#행 삭제 axis = 0
+#drop 명령어를 이용한 행 삭제
+#axis = 0을 선택할 경우 열을 삭제함
+df = df.drop('돌이', axis=0)# = df.drop(2, axis=0)
+print(df.to_string(col_space=5))
+
+#원소 변경하기
+
+#열 단위 변경
+#dataframe의 열의 label에 대해서 새로운 list를 대응
+df['나이'] = [21, 23, 22, 24, 25]
+print(df.to_string(col_space=5))
+
+#행 단위 변경
+#loc이나 iloc을 이용한 변경
+df.loc['순이',:] = ['C', 'cs', 163, 25]
+df.iloc[3, :] = ['B','ai', 177, 23]
+print(df.to_string(col_space=5))
+
+#영역 단위 변경
+#loc의 slicing을 적용(label)
+df.loc['영이':'순이', '키':'나이'] = [[150, 20], [170, 20]]
+print(df.to_string(col_space=5))
+
+#iloc의 slicing을 적용(index)
+df.iloc[1:4, 2:4] = [[155, 25],[165, 25], [175, 25]]
+print(df.to_string(col_space=5))
+
+#개별 원소 변경
+#at 또는 iat을 사용
+df.at['철이', '성적'] = 'D'
+print(df.to_string(col_space=5))
+df.iat[2, 0] = 'F'
+print(df.to_string(col_space=5))
+
+#결측값 처리
+#값이 할당되지 않은 항목(NaN : Not A Number)
+df2 = pd.DataFrame({
+    '성적' : pd.Series(['B', 'A', 'C'], index=['철이', '영이', '돌이']),
+    '키' : pd.Series([175, 165, 170, 160], index=['철이', '영이', '돌이', '순이']),
+    '나이' : pd.Series([25, 23, 22, 21, 24], index=['철이', '영이', '돌이', '순이', '훈이'])
+})
+print(df2.to_string(col_space=5))
+
+#NaN 결측값 처리가 필수
+#결측값이 있는지 확인하기
+#df.isna() 결측값이 있는지 확인하는 함수
+
+#결측값이 포함된 행이나 열을 제거
+df2 = df2.dropna() #axis = 0과 같은 결과
+df2 = df2.dropna(axis=1) #NaN를 포함한 columns 제거
+print(df2.to_string(col_space=5))
+
+#결측값을 다른 값으로 교체
+df2 = df2.fillna(0)
+df2 = df2['성적'].fillna('X')
+df2 = df2['키'].fillna(100)
+print(df2)
+
+#replace() 함수
+#특정값을 변경하는 함수
+df2 = df2['성적'].replace('E', 'F')
+print(df2)
+
+import numpy as np
+
+df2['성적'] = df2['성적'].replace(np.nan, 'F')
+print(df2)
+
+#apply() 함수
+#미리 정한 함수를 적용함
+def func(x) :
+    if x <= 'C' :
+        return 'pass'
+    else :
+        return 'fail'
+df2 = df2['성적'].apply(func)
+print(df2)
+========================================================
+데이터 분석 방법
+    data에서 적절한 구분을 뽑아내고 적절한 통계 함수를 적용하는 것
+    head = dataframe의 첫 5개의 행을 출력
+    tail = dataframe의 마지막 5개의 행을 출력
+    describe() : 기본적인 통계 자료를 출력
+        count : data의 개수
+        mean : data의 평균
+        std : data의 표준 편차
+        min, 25%, 50%, 75%, max(최대값)
+        4분위 수
+        문자열을 출력 안됨
+    idxmin, idxmax = 최대값, 최소값 index 찾기
+    value_counts() = 원소의 개수 세기
+        동일한 값을 가진 행의 개수 세기
+    통계 함수
+        mean(), max(), min(), sum(), median()
+데이터의 편집 concatenation
+    pd.concat([df1, df2]) axis = 0과 같은 결과 -> index방향으로 결합
+    pd.concat([df1, df2], axis=1) column방향으로 결합
+    pd.concat([df1, df2], join='inner') index방향으로 결합 & 교집합 column만 적용
+    pd.concat([df1, df2], axis=1, join='inner')
+    pd.concat([df1, df2], join='outer) index방향으로 결합 & 합집합 column만 적용
